@@ -1,0 +1,32 @@
+.login__input {
+    color: #cccccc;
+    background-color: black !important;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid rgba(204, 204, 204, 0.2);
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.login__input:focus {
+    outline: 0;
+}
+
+.login__input:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .login__input {
+        margin: 0 auto;
+        max-width: 238px;
+    }
+}

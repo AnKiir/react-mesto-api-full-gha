@@ -1,0 +1,29 @@
+.popup__info {
+    max-width: 358px;
+    font-size: 14px;
+    font-weight: 400;
+    color: black;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 0 0 10px 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+/* убираю жирную стрёмную обводку */
+.popup__info:focus {
+    outline: 0;
+}
+
+.popup__info:last-of-type {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) {
+    .popup__info {
+        max-width: 238px;
+    }
+}
