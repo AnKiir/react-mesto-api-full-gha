@@ -11,6 +11,7 @@ const authRouter = require('./routes/auth');
 
 const authMiddleware = require('./middlewares/auth');
 const errorsMiddleware = require('./middlewares/errors');
+const corsMiddleware = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 
@@ -23,6 +24,7 @@ app.use(cors());
 app.use(express.urlencoded());
 app.use(express.json());
 
+app.use(corsMiddleware);
 app.use(requestLogger);
 
 app.use(authRouter);

@@ -9,8 +9,8 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.79.15
+IP 158.160.79.15
 
-Frontend https://...
+Frontend https://kirkero.nomoreparties.co
 
-Backend https://...
+Backend https://api.kirkero.nomoreparties.nomoreparties.co
