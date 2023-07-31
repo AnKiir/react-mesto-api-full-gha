@@ -7,7 +7,7 @@ const NotFoundDataError = require('../errors/notFoundDataError');
 const UnauthorizedError = require('../errors/unauthorizedError');
 const User = require('../models/user');
 
-const { JWT_SECRET } = process.env;
+const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUsers = (req, res, next) => {
   User.find({})
@@ -99,7 +99,7 @@ const login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       res.send({
-        token: jwt.sign({ _id: user._id }, JWT_SECRET, 'super-strong-secret', {
+        token: jwt.sign({ _id: user._id }, NODE_ENV === 'production' ? JWT_SECRET : 'super-strong-secret', {
           expiresIn: '7d',
         }),
       });
