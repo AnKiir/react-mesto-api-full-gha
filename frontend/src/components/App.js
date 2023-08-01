@@ -30,26 +30,11 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [tooltip, setTooltip] = useState({ image: '', message: '' });
-
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-
   const [cards, setCards] = useState([]);
   const [selectedCard, setSelectedCard] = useState({});
-
-  useEffect(() => {
-    if (loggedIn) {
-      Promise.all([api.getUserData(), api.getInitialCards()])
-        .then(([user, cards]) => {
-          setCurrentUser(user);
-          setCards(cards);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [loggedIn]);
 
   useEffect(() => {
     if (
@@ -119,7 +104,7 @@ function App() {
   }
 
   function handleLikeCard(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
     api.toggleLike(card._id, isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
     })
@@ -192,24 +177,39 @@ function App() {
         });
         console.log(err)
       });
-  }
+  };
 
-  const tokenCheck = () => {
+  useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      auth.getContent(jwt)
-        .then(({ data }) => {
+      Promise.all([api.getUserData(), api.getInitialCards()])
+        .then(([user, cards]) => {
+          setCurrentUser(user);
+          setCards(cards);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [loggedIn]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+      auth
+        .getContent()
+        .then((res) => {
           setLoggedIn(true);
-          setUser(data.email);
+          setUser(res.email);
           navigate('/', { replace: true })
         })
         .catch(err => console.log(err));
     }
-  }
+  }, [loggedIn]);
 
-  useEffect(() => {
-    tokenCheck();
-  }, []);
+  // useEffect(() => {
+  //   tokenCheck();
+  // }, [loggedIn]);
 
   const handleLogout = () => {
     setLoggedIn(false);

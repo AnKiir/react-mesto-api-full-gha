@@ -1,6 +1,6 @@
 .elements {
     width: 880px;
-    min-height: 50vh;
+    /* min-height: 50vh; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     column-gap: 17px;

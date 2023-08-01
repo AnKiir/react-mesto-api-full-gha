@@ -1,4 +1,6 @@
-export const BASE_URL = "https://auth.nomoreparties.co"
+// export const BASE_URL = "https://auth.nomoreparties.co"
+export const BASE_URL = "http://localhost:3000"
+// export const BASE_URL = "http://api.kirkero.nomoreparties.nomoreparties.co"
 
 function checkResponse(res) {
     if (res.ok) {
@@ -35,13 +37,14 @@ export const authorize = ({email, password}) => {
     })
 }
 
-export const getContent = (jwt) => {
+export const getContent = () => {
+    const token = localStorage.getItem("jwt");
     return fetch(`${BASE_URL}/users/me`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${jwt}`
+            "Authorization": `Bearer ${token}`
         },
     })
     .then((res) => {

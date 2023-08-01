@@ -11,7 +11,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 const getUsers = (req, res, next) => {
   User.find({})
-    .then((users) => res.send({ users }))
+    .then((users) => res.send(users))
     .catch(next);
 };
 
@@ -19,7 +19,7 @@ const getUser = (req, res, next) => {
   User.findById(req.params.userId)
     .then((user) => {
       if (user) {
-        res.send({ user });
+        res.send(user);
       } else {
         throw new NotFoundDataError('Пользователь по указанному _id не найден');
       }
@@ -37,7 +37,7 @@ const getCurrentUser = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (user) {
-        res.send({ data: user });
+        res.send(user);
       } else {
         throw new NotFoundDataError('Пользователь по указанному _id не найден');
       }
@@ -58,7 +58,7 @@ const postUser = (req, res, next) => {
     .then((user) => {
       const { ...userCurr } = user.toObject();
       delete userCurr.password;
-      res.status(201).send({ data: userCurr });
+      res.status(201).send(userCurr);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
@@ -74,7 +74,7 @@ const postUser = (req, res, next) => {
 const patchUser = (req, res, data, next) => {
   User.findByIdAndUpdate(req.user._id, data, { new: true, runValidators: true })
     .orFail()
-    .then((user) => res.send({ user }))
+    .then((user) => res.send(user))
     .catch((err) => {
       if (err instanceof mongoose.Error.ValidationError) {
         next(new IncorrectError('Переданы некорректные данные при обновлении профиля'));
