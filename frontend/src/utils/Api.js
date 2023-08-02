@@ -89,7 +89,7 @@ class Api {
   // лайк карточки
   setLike(cardId) {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
       headers: {
         authorization: `Bearer ${token}`,
@@ -101,7 +101,7 @@ class Api {
 
   deleteLike(cardId) {
     const token = localStorage.getItem("jwt");
-    return fetch(`${this._url}/cards/likes/${cardId}`, {
+    return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
       headers: {
         authorization: `Bearer ${token}`

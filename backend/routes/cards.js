@@ -30,7 +30,7 @@ router.delete(
   deleteCard
 );
 router.put(
-  '/cards/likes/:cardId',
+  '/cards/:cardId/likes',
   celebrate({
     params: Joi.object().keys({
       cardId: Joi.string().required().length(24).hex(),
@@ -39,7 +39,7 @@ router.put(
   putLike
 );
 router.delete(
-  '/cards/likes/:cardId',
+  '/cards/:cardId/likes',
   celebrate({
     params: Joi.object().keys({
       cardId: Joi.string().required().length(24).hex(),
