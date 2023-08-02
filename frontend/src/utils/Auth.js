@@ -1,5 +1,6 @@
 // export const BASE_URL = "http://localhost:3000"
-export const BASE_URL = "https://kirkero.nomoreparties.co"
+// export const BASE_URL = "https://kirkero.nomoreparties.co"
+export const BASE_URL = "https://api.kirkero.nomoreparties.nomoreparties.co"
 
 function checkResponse(res) {
     if (res.ok) {

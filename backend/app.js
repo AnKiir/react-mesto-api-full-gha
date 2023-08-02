@@ -15,8 +15,6 @@ const corsMiddleware = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 require('dotenv').config();
 
-console.log(process.env.JWT_SECRET);
-
 const { PORT = 3000 } = process.env;
 const app = express();
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
