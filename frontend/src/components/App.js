@@ -189,7 +189,6 @@ function App() {
         })
         .catch((error) => {
           console.log(error);
-          console.log(jwt);
         });
     }
   }, [loggedIn]);
