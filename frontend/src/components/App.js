@@ -189,6 +189,7 @@ function App() {
         })
         .catch((error) => {
           console.log(error);
+          console.log(jwt);
         });
     }
   }, [loggedIn]);
@@ -205,7 +206,7 @@ function App() {
         })
         .catch(err => console.log(err));
     }
-  }, [loggedIn]);
+  }, [navigate, loggedIn]);
 
   // useEffect(() => {
   //   tokenCheck();
