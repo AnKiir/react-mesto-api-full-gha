@@ -129,7 +129,7 @@ class Api {
 
 const api = new Api({
   // baseUrl: 'http://localhost:3000',
-  baseUrl: 'https://kirkero.nomoreparties.co',
+  baseUrl: 'https://api.kirkero.nomoreparties.nomoreparties.co',
 });
 
 export default api
