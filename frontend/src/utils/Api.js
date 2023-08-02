@@ -36,8 +36,7 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        name: name,
-        about: about,
+        name, about
       })
     })
       .then((res) => this._checkResponse(res))
@@ -53,7 +52,7 @@ class Api {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        avatar: avatar,
+        avatar,
       })
     })
       .then((res) => this._checkResponse(res))
@@ -71,7 +70,7 @@ class Api {
   }
 
   // добавление карточки
-  addCard({ name, link }) {
+  addCard(name, link) {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards`, {
       method: 'POST',
