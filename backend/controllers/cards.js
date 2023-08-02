@@ -6,7 +6,7 @@ const ForbiddenError = require('../errors/forbiddenError');
 
 const getCards = (req, res, next) => {
   Card.find({})
-    .then((cards) => res.send(cards))
+    .then((cards) => res.send(cards.reverse()))
     .catch(next);
 };
 
@@ -41,7 +41,7 @@ const deleteCard = (req, res, next) => {
       }
     })
     .then((card) => {
-      res.send(card);
+      res.status(200).send(card);
     })
     .catch((err) => {
       if (err instanceof mongoose.Error.CastError) {
@@ -60,7 +60,7 @@ const putLike = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        res.send(card);
+        res.status(200).send(card);
       } else {
         throw new NotFoundDataError('Передан несуществующий _id карточки');
       }
@@ -82,7 +82,7 @@ const deleteLike = (req, res, next) => {
   )
     .then((card) => {
       if (card) {
-        res.send(card);
+        res.status(200).send(card);
       } else {
         throw new NotFoundDataError('Передан несуществующий _id карточки');
       }
