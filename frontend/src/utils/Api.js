@@ -71,7 +71,7 @@ class Api {
   }
 
   // добавление карточки
-  addCard(name, link) {
+  addCard({ name, link }) {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards`, {
       method: 'POST',
