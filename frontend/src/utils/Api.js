@@ -19,6 +19,7 @@ class Api {
   getUserData() {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/users/me`, {
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`
       }
@@ -31,6 +32,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -48,6 +50,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -63,6 +66,7 @@ class Api {
   getInitialCards() {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards`, {
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`
       },
@@ -75,6 +79,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards`, {
       method: 'POST',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -91,6 +96,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
@@ -103,6 +109,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`
       },
@@ -119,6 +126,7 @@ class Api {
     const token = localStorage.getItem("jwt");
     return fetch(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
+      mode: 'cors',
       headers: {
         authorization: `Bearer ${token}`
       },
