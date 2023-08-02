@@ -3,6 +3,12 @@ const { celebrate, Joi } = require('celebrate');
 const { postUser, login } = require('../controllers/users');
 const { urlPattern } = require('../const');
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.post(
   '/signin',
   celebrate({
